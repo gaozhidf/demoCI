@@ -11,6 +11,9 @@ before_install:
 
 jobs:
   include:
+    - stage: mvnw package
+      script:
+      - ./mvnw package
     - stage: build && test
       script:
       - docker-compose up --build -d

@@ -15,13 +15,20 @@ jobs:
     - stage: build docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t demo_ci .
+      - docker-compose build
       - docker images
-      - docker tag demo_ci $DOCKER_USERNAME/demo_ci
-      - docker push $DOCKER_USERNAME/demo_ci
+      - docker-compose push
     - stage: test
-      script: docker run --rm $DOCKER_USERNAME/demo_ci curl localhost:8080/hello
-#    - script: docker run --rm $DOCKER_USERNAME/demo_ci cat hello.txt
+      script:
+      - docker-compose up -d
+      - ./dockerfiles/test.sh
+      - docker-compose stop && echo y | docker-compose rm
+    - stage: push docker image
+      script:
+      - docker-compose push
+    - stage: deploy
+      script:
+      - echo "deploy"
 
 notifications:
   email:

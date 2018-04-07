@@ -1,7 +1,16 @@
 # demoCI
 [![Build Status](https://travis-ci.org/gaozhidf/demoCI.svg?branch=master)](https://travis-ci.org/gaozhidf/demoCI)
 
-## Install
+## 1. Test with docker
+#### Setup services
+```shell
+docker-compose up
+```
+
+#### Open the browser http://localhost(http://localhost:80)
+
+## 2. Normal Usage
+#### Install
 ```shell
 # linux
 ./mvnw install
@@ -10,7 +19,7 @@
 mvnw.cmd install
 ```
 
-## Build
+#### Build
 ```shell
 # linux
 ./mvnw package
@@ -19,7 +28,7 @@ mvnw.cmd install
 mvnw.cmd package
 ```
 
-## Run
+#### Run
 ```shell
 # linux
 ./mvnw spring-boot:run
@@ -28,5 +37,5 @@ mvnw.cmd package
 mvnw.cmd spring-boot:run
 ```
 
-## Deploy
+## 3. CI Job
 [https://travis-ci.org/gaozhidf/demoCI](https://travis-ci.org/gaozhidf/demoCI)

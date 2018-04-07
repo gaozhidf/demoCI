@@ -1,0 +1,15 @@
+version: '3'
+services:
+    demo_ci_static_server:
+        build: ./dockerfiles/staticserver
+        ports:
+            - 80:80
+        links:
+            - demo_ci
+        image: gaozhidf/demo_ci_static_server
+
+    demo_ci:
+        build: .
+        expose:
+            - 8080
+        image: gaozhidf/demo_ci

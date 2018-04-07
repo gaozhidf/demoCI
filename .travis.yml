@@ -11,18 +11,13 @@ before_install:
 
 jobs:
   include:
-    - stage: mvnw package
-      script:
-      - ./mvnw package
     - stage: build && test
-      install: skip
       script:
       - docker-compose up --build -d
       - docker images
       - ./dockerfiles/test.sh
       - docker-compose down --rmi all
     - stage: push docker image
-      install: skip
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker-compose build

@@ -17,8 +17,8 @@ https://github.com/gaozhidf/demoCI           https://tra^is-ci.org/gaozhidf/demo
 +-----+-------+                      |  3. Stage 3:                      |                             |
 |             |                      |     a. push images to docker repo |                             |
 | Source Codes| Local PC             |  4. Stage 4:                      |                             |
-|             |                      |     a. deploy to remote server    |          +------------------v----------------+
-+-------------+                      |                                   |          |                                   |
+|             |                      |     a. deploy to remote server    | deploy   +------------------v----------------+
++-------------+                      |                                   +--------> |                                   |
                                      +-----------------------------------+          |      Remote Server                |
                                                                                     |                                   |
                                                                                     |   1. setup the static server for  |

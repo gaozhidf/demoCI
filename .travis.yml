@@ -6,7 +6,7 @@ jdk:
   - oraclejdk8
 before_install:
   - chmod +x mvnw
-  - chmod +x dockerfiles/test.sh
+  - chmod +x dockerfiles/*.sh
   - openssl aes-256-cbc -K $encrypted_62f3167d5387_key -iv $encrypted_62f3167d5387_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
 
 jobs:
@@ -15,20 +15,23 @@ jobs:
       script:
       - ./mvnw package
     - stage: build && test
+      install: skip
       script:
       - docker-compose up --build -d
       - docker images
       - ./dockerfiles/test.sh
       - docker-compose down --rmi all
     - stage: push docker image
+      install: skip
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker-compose build
       - docker-compose push
     - stage: deploy
+      install: skip
       script:
       - chmod 600 ~/.ssh/id_rsa
-      - ssh -oPort=$TARGET_SERVER_PORT travis@$TARGET_SERVER_HOST -o StrictHostKeyChecking=no 'cd ~ && wget https://github.com/${TRAVIS_REPO_SLUG}/blob/master/docker-compose.yml && docker-compose down --rmi all && docker-compose up --build -d'
+      - ./dockerfiles/deploy.sh
 
 
 notifications:

@@ -6,6 +6,7 @@ jdk:
   - oraclejdk8
 before_install:
   - chmod +x mvnw
+  - chmod +x dockerfiles/test.sh
 
 jobs:
   include:
@@ -29,6 +30,11 @@ jobs:
     - stage: deploy
       script:
       - echo "deploy"
+
+after_success:
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh blog@139.199.90.74 -o StrictHostKeyChecking=no 'cd ~ && docker-compose pull && npm install && npm run build'
+
 
 notifications:
   email:

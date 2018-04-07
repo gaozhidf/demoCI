@@ -4,32 +4,28 @@
 
 ## Workflow
 ```
-   Git Hub                                      Travis CI Jobs
-
-+-------------+                      +-----------------------------------+
-|             |    toggle CI/CD jobs |                                   |
-| Git Repo    +---------------------->  1. Stage 1:                      |
-|             |                      |     a. mvn install                |
-+-----+-------+                      |     b. key decrypt                |
-      ^                              |  2. Stage 2:                      |
-      | git commit && push           |     a. build docker images        |
-      |                              |     b. test docker containers     |
-+-----+-------+                      |  3. Stage 3:                      |
-|             |                      |     a. push images to docker repo |
-| Source Codes| Local PC             |  4. Stage 4:                      |
-|             |                      |     a. deploy to remote server    |
-+-------------+                      |                                   |
-                                     +----------+------------------------+
-                                                |
-                                                | deploy docker containers
-                                                |
-                                                v
-                                       +--------+------------+
-                                       |                     |
-                                       |     Remote Server   |
-                                       |                     |
-                                       |                     |
-                                       +---------------------+
+   Git Hub                                      Travis CI Jobs                           Docker Hub
+https://github.com/gaozhidf/demoCI           https://tra^is-ci.org/gaozhidf/demoCI    https://hub.docker.com/u/gaozhidf/
++-------------+                      +-----------------------------------+            +--------------------------------+
+|             |    toggle CI/CD jobs |                                   +------------+ gaozhidf/demo_ci               |
+| Git Repo    +---------------------->  1. Stage 1:                      | push images|                                |
+|             |                      |     a. mvn install                |            | gaozhidf/demo_ci_static_server |
++-----+-------+                      |     b. key decrypt                |            |                                |
+      ^                              |  2. Stage 2:                      |            +----------------+---------------+
+      | git commit && push           |     a. build docker images        |                             |
+      |                              |     b. test docker containers     |                             | pull docker images
++-----+-------+                      |  3. Stage 3:                      |                             |
+|             |                      |     a. push images to docker repo |                             |
+| Source Codes| Local PC             |  4. Stage 4:                      |                             |
+|             |                      |     a. deploy to remote server    |          +------------------v----------------+
++-------------+                      |                                   |          |                                   |
+                                     +-----------------------------------+          |      Remote Server                |
+                                                                                    |                                   |
+                                                                                    |   1. setup the static server for  |
+                                                                                    |      static resources             |
+                                                                                    |   2. setup the demo server        |
+                                                                                    |                                   |
+                                                                                    +-----------------------------------+
 
 ```
 

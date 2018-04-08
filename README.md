@@ -67,3 +67,6 @@ mvnw.cmd spring-boot:run
 
 ## 3. CI Job
 [https://travis-ci.org/gaozhidf/demoCI](https://travis-ci.org/gaozhidf/demoCI)
+
+## 4. Demo Online
+[http://gaozhidf.ml:10080](http://gaozhidf.ml:10080)

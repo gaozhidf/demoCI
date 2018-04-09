@@ -33,7 +33,7 @@ jobs:
       - sed -i "s#\$TARGET_SERVER_HOST#$TARGET_SERVER_HOST:$TARGET_SERVER_PORT#g" ./dockerfiles/ansible/hosts
       - >
         docker run --privileged -e ANSIBLE_FORCE_COLOR=1 --rm
-                   -v ./dockerfiles/ansible:/target_files/
+                   -v `pwd`/dockerfiles/ansible:/target_files/
                    williamyeh/ansible:alpine3
                    ansible-playbook --key-file /target_files/id_rsa -i /target_files/hosts /target_files/task.yml
 

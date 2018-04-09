@@ -31,7 +31,7 @@ jobs:
       - chmod 600 ./dockerfiles/ansible/id_rsa
       - cp docker-compose.yml ./dockerfiles/ansible/
       - sed -i "s#\$TARGET_SERVER_HOST#$TARGET_SERVER_HOST:$TARGET_SERVER_PORT#g" ./dockerfiles/ansible/hosts
-      - >
+      - |
         docker run --privileged -e ANSIBLE_FORCE_COLOR=1 --rm
                    -v `pwd`/dockerfiles/ansible:/target_files/
                    williamyeh/ansible:alpine3

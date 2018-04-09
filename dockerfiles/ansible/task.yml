@@ -1,0 +1,28 @@
+---
+- name: demoCI ansible-playbook
+  hosts: all
+  remote_user: travis
+  gather_facts: no
+  tasks:
+  - name: copy docker-compose.yml
+    copy:
+      force: yes
+      src: /target_files/docker-compose.yml
+      dest: /home/travis/docker-compose.yml
+      
+  - name: setup docker env
+    shell: >
+      cd ~ &&  
+      source .profile && 
+      echo "$(grep -v "build:" docker-compose.yml)" > docker-compose.yml && 
+      docker-compose down --rmi all &&
+      docker-compose up -d
+    args:
+      executable: /bin/bash
+    register: output
+
+  - debug:
+      var: output
+    
+    
+    

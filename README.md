@@ -1,3 +1,7 @@
+> This is a demo CI project, which would no longer maintain  
+> You can follow [Todo List](https://github.com/gaozhidf/demoCI/wiki) to create the project
+
+
 # demoCI
 [![Build Status](https://travis-ci.org/gaozhidf/demoCI.svg?branch=master)](https://travis-ci.org/gaozhidf/demoCI)
 

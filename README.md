@@ -4,6 +4,7 @@
 
 # demoCI
 [![Build Status](https://travis-ci.org/gaozhidf/demoCI.svg?branch=master)](https://travis-ci.org/gaozhidf/demoCI)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fgaozhidf%2FdemoCI.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fgaozhidf%2FdemoCI?ref=badge_shield)
 
 
 ## Workflow
@@ -74,3 +75,7 @@ mvnw.cmd spring-boot:run
 
 ## 4. Demo Online
 [http://gaozhidf.ml:10080](http://gaozhidf.ml:10080)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fgaozhidf%2FdemoCI.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fgaozhidf%2FdemoCI?ref=badge_large)
